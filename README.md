@@ -1,14 +1,8 @@
----
-
-## ✅ `README.md`
-
-```markdown
 # 🧠 Crypto Chatbot with LangGraph & Streamlit
 
 A smart, AI-powered chatbot for crypto traders and enthusiasts — combining real-time market data, technical/fundamental analysis, and up-to-date news using tools like **Binance API**, **CoinGecko**, **Tavily**, and **OpenAI GPT-4o**. Built with LangGraph and Streamlit.
 
 ---
-
 ## 🚀 Features
 
 - 🔍 Ask real-time questions like:
