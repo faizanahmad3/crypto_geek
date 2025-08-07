@@ -15,6 +15,6 @@ def detect_support_resistance(df):
     highs = df["high"].rolling(window=5).max()
     lows = df["low"].rolling(window=5).min()
     return {
-        "resistance": round(highs.max(), 2),
-        "support": round(lows.min(), 2)
+        "resistance": highs.max(),
+        "support": lows.min()
     }
