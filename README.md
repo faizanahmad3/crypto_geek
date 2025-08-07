@@ -12,7 +12,6 @@ A smart, AI-powered chatbot for crypto traders and enthusiasts — combining rea
   - “Get latest news about XRP.”
 
 - 📈 Uses live data from:
-  - [Binance](https://www.binance.com/en)
   - [CoinGecko](https://www.coingecko.com/)
   - [Tavily](https://www.tavily.com/) (for web search)
 
@@ -37,8 +36,7 @@ project\_root/
 │   └── state.py
 ├── tools/                 # Tool wrappers
 │   ├── binance.py
-│   ├── coingecko.py
-│   └── tavily.py
+│   └── coingecko.py
 ├── utils/
 │   └── config.py
 ├── .env                   # API keys (not committed)

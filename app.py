@@ -40,6 +40,8 @@ if user_input:
     with st.spinner("Analyzing..."):
         config = {"configurable": {"thread_id": st.session_state.thread_id}}
         result = graph.invoke({"messages": user_input}, config=config)
+        for m in result['messages']:
+            m.pretty_print()
         response = result['messages'][-1].content
 
         # Add as a single Q&A pair
