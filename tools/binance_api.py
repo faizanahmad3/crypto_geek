@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from pandas import DataFrame
+from datetime import datetime
 
 BASE_URL = "https://api.binance.com/api/v3"
 
@@ -27,7 +28,7 @@ def get_price(symbol: str = "BTCUSDT") -> float:
     return float(response.json()["price"])
 
 
-def get_candlestick_data(symbol: str = "BTCUSDT", interval: str = "1h", limit: int = 50) -> DataFrame:
+def get_candlestick_data(symbol: str = "BTCUSDT", interval: str = "1d", limit: int = 365) -> DataFrame:
     """
     Fetch OHLC (Open-High-Low-Close) candlestick data for a given trading pair.
 
@@ -35,9 +36,9 @@ def get_candlestick_data(symbol: str = "BTCUSDT", interval: str = "1h", limit: i
         symbol (str): Trading pair symbol (e.g., "BTCUSDT").
                       Defaults to "BTCUSDT".
         interval (str): Candlestick interval (e.g., "1m", "5m", "1h", "1d").
-                        Defaults to "1h".
+                        Defaults to "1d".
         limit (int): Number of data points to retrieve (maximum 1000).
-                     Defaults to 50.
+                     Defaults to 365.
 
     Returns:
         pandas.DataFrame: A DataFrame containing candlestick data with columns:
@@ -70,6 +71,9 @@ def get_candlestick_data(symbol: str = "BTCUSDT", interval: str = "1h", limit: i
         "timestamp", "open", "high", "low", "close", "volume", "close_time",
         "quote_asset_volume", "num_trades", "taker_buy_base", "taker_buy_quote", "ignore"
     ])
+
+    df["timestamp"] = pd.to_datetime(df["timestamp"], unit='ms')
+
     df["close"] = df["close"].astype(float)
     return df
 
@@ -81,4 +85,4 @@ def get_binance_symbols():
     return list(set(base_coins))  # Unique coins
 
 
-# print(get_ohlc())
+# print(get_candlestick_data(symbol="GALAUSDT", interval="1d", limit=365))
